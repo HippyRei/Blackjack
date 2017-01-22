@@ -8,7 +8,7 @@ import cards.Card.Suit;
 import cards.Card.Value;
 
 public class CardTest {
-	Card c = new Card(Value.ACE, Suit.SPADES);
+	Card t = new Card(Value.ACE, Suit.SPADES);
 
 	@Test(expected = IllegalArgumentException.class)
 	public void constrNullVal() {
@@ -27,11 +27,29 @@ public class CardTest {
 	
 	@Test
 	public void val() {
-		assertEquals(c.val(), Value.ACE);
+		assertEquals(t.val(), Value.ACE);
 	}
 	
 	@Test
 	public void suit() {
-		assertEquals(c.suit(), Suit.SPADES);
+		assertEquals(t.suit(), Suit.SPADES);
+	}
+	
+	@Test
+	public void equalsSameCard() {
+		Card c = new Card(Value.ACE, Suit.SPADES);
+		assertEquals(c, t);
+	}
+	
+	@Test
+	public void equalsDifVal() {
+		Card c = new Card(Value.TWO, Suit.SPADES);
+		assertNotEquals(c, t);
+	}
+	
+	@Test
+	public void equalsDifSuit() {
+		Card c = new Card(Value.ACE, Suit.HEARTS);
+		assertNotEquals(c, t);
 	}
 }

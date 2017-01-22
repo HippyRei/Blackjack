@@ -31,4 +31,14 @@ public class Card {
 	public Suit suit() {
 		return s;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Card)) {
+			return false;
+		}
+		
+		Card c = (Card) o;
+		return this.v == c.v && this.s == c.s;
+	}
 }
